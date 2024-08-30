@@ -1,43 +1,96 @@
-import "./styles.css";
-import { useEffect, useState } from "react";
-export default function App() {
-  const n = 8;
-  const m = 8;
-  const [chessBoard, setChessBoard] = useState([]);
-  const [pieces, setPieces] = useState([
-    { type: "fa-chess-rook", position: [0, 0] }, 
-    { type: "fa-chess-knight", position: [0, 1] }, 
-  ]);
+import React from 'react';
+import './App.css';
+import { FaChessPawn, FaChessRook, FaChessKnight, FaChessBishop, FaChessKing, FaChessQueen } from "react-icons/fa";
 
-  useEffect(() => {
-    const result = [];
-    for (let i = 0; i < n; i++) {
-      const row = Array.from({ length: m });
-      result.push(row);
-    }
-    setChessBoard(result);
-  }, []);
-
+function Chessboard() {
   return (
-    <>
-      {chessBoard.length > 0 && chessBoard.map((row, rIndex) => {
-        return (
-          <div className="row" key={rIndex}>
-            {row.map((_, cIndex) => {
-          
-              const piece = pieces.find(p => p.position[0] === rIndex && p.position[1] === cIndex);
-              return (
-                <div
-                  className={`box ${ (rIndex + cIndex) % 2 === 0 ? "black" : "white" }`}
-                  key={cIndex}
-                >
-                  {piece && <i className={`fas ${piece.type}`}></i>}
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
-    </>
+    <div className="App">
+      <table>
+        <tbody>
+          <tr>
+            <td className="white"><FaChessRook size={35} /></td>
+            <td className="black"><FaChessKnight size={35} /></td>
+            <td className="white"><FaChessBishop size={35} /></td>
+            <td className="black"><FaChessKing size={35} /></td>
+            <td className="white"><FaChessQueen size={35} /></td>
+            <td className="black"><FaChessBishop size={35} /></td>
+            <td className="white"><FaChessKnight size={35} /></td>
+            <td className="black"><FaChessRook size={35} /></td>
+          </tr>
+          <tr>
+            <td className="black"><FaChessPawn size={35} /></td>
+            <td className="white"><FaChessPawn size={35} /></td>
+            <td className="black"><FaChessPawn size={35} /></td>
+            <td className="white"><FaChessPawn size={35} /></td>
+            <td className="black"><FaChessPawn size={35} /></td>
+            <td className="white"><FaChessPawn size={35} /></td>
+            <td className="black"><FaChessPawn size={35} /></td>
+            <td className="white"><FaChessPawn size={35} /></td>
+          </tr>
+          <tr>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+          </tr>
+          <tr>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+          </tr>
+          <tr>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+          </tr>
+          <tr>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+            <td className="black"></td>
+            <td className="white"></td>
+          </tr>
+          <tr>
+            <td className="black"><FaChessPawn size={35} style={{ color: 'wheat' }} /></td>
+            <td className="white"><FaChessPawn size={35} style={{ color: 'wheat' }} /></td>
+            <td className="black"><FaChessPawn size={35} style={{ color: 'wheat' }} /></td>
+            <td className="white"><FaChessPawn size={35} style={{ color: 'wheat' }} /></td>
+            <td className="black"><FaChessPawn size={35} style={{ color: 'wheat' }} /></td>
+            <td className="white"><FaChessPawn size={35} style={{ color: 'wheat' }} /></td>
+            <td className="black"><FaChessPawn size={35} style={{ color: 'wheat' }} /></td>
+            <td className="white"><FaChessPawn size={35} style={{ color: 'wheat' }} /></td>
+          </tr>
+          <tr>
+            <td className="white"><FaChessRook size={35} style={{ color: 'wheat' }} /></td>
+            <td className="black"><FaChessKnight size={35} style={{ color: 'wheat' }} /></td>
+            <td className="white"><FaChessBishop size={35} style={{ color: 'wheat' }} /></td>
+            <td className="black"><FaChessQueen size={35} style={{ color: 'wheat' }} /></td>
+            <td className="white"><FaChessKing size={35} style={{ color: 'wheat' }} /></td>
+            <td className="black"><FaChessBishop size={35} style={{ color: 'wheat' }} /></td>
+            <td className="white"><FaChessKnight size={35} style={{ color: 'wheat' }} /></td>
+            <td className="black"><FaChessRook size={35} style={{ color: 'wheat' }} /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 }
+
+export default Chessboard;
